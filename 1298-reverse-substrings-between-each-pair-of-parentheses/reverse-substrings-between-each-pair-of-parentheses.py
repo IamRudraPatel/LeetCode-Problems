@@ -1,17 +1,21 @@
 class Solution:
-    def reverse(self, arr, low, high):
-        while low<=high:
-            arr[low], arr[high] = arr[high], arr[low]
-            low += 1 
-            high -= 1
-
     def reverseParentheses(self, s: str) -> str:
-        answer = []
-        skipLen = []
-        for ch in s:
-            if ch == '(':
-                skipLen.append(len(answer))
-            elif ch == ')':
-                self.reverse(answer, skipLen.pop(), len(answer)-1)
-            else: answer.append(ch)
-        return "".join(answer)
+        stack = []
+        bracketsMap = {}
+        n = len(s)
+        for i in range(n):
+            if s[i] == '(': stack.append(i)
+            elif s[i] == ')':
+                idx = stack.pop()
+                bracketsMap[idx] = i
+                bracketsMap[i] = idx
+        ans = ""
+        direct = 1
+        i = 0
+        while (i<n):
+            if (s[i] == '(') or (s[i] == ')'):
+                i = bracketsMap[i]
+                direct *= -1
+            else: ans += s[i]
+            i += direct
+        return ans
