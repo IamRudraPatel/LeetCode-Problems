@@ -1,9 +1,7 @@
 class Solution:
     def survivedRobotsHealths(self, positions, healths, directions):
         n = len(positions)
-        index = {}
-        for i in range(n):
-            index[positions[i]] = i
+        index = {robot: i for i,robot in enumerate(positions)}
         positions.sort()
         recentRobot = []
         for robot in positions:
