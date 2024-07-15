@@ -7,12 +7,10 @@ class Solution:
             curCh = formula[i]
             if curCh == '(':
                 stack.append(defaultdict(int))
-                i+=1
             elif curCh == ')':
                 num = ""
-                i += 1
-                while (i<n) and (formula[i].isdigit()):
-                    num += formula[i]
+                while (i+1)<n and (formula[i+1].isdigit()):
+                    num += formula[i+1]
                     i += 1
                 num = 1 if not num else int(num)
                 curMap = stack.pop()
@@ -22,15 +20,15 @@ class Solution:
             elif curCh.isupper(): 
                 element = curCh
                 atomCount = ""
-                i += 1
-                if (i<n) and (formula[i].islower()):
-                    element += formula[i]
+                if (i+1)<n and (formula[i+1].islower()):
+                    element += formula[i+1] 
                     i += 1 
-                while (i<n) and (formula[i].isdigit()):
-                    atomCount += formula[i]
+                while (i+1)<n and (formula[i+1].isdigit()):
+                    atomCount += formula[i+1]
                     i += 1
                 atomCount = 1 if not atomCount else int(atomCount)
                 stack[-1][element] += atomCount
+            i += 1
         answer = ""
         finalMap = stack.pop()
         for eles in sorted(finalMap.keys()):
