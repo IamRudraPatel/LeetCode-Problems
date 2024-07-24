@@ -1,9 +1,11 @@
 class Solution:
     def sortJumbled(self, mapping: List[int], nums: List[int]) -> List[int]:
-        mappedNums = {}
+        mappedNums = []
         for i, num in enumerate(nums):
-            newNum = "".join(str(mapping[int(digit)]) for digit in str(num))
-            mappedNums[num] = [int(newNum), i]
-        nums.sort(key=lambda x: (mappedNums[x][0], mappedNums[x][1]))
-        return nums
-        
+            newNum = 0
+            for digit in str(num):
+                newNum *= 10
+                newNum += mapping[int(digit)]
+            mappedNums.append((newNum, i)) # (mappedNum, index)
+        mappedNums.sort()
+        return [nums[pair[1]] for pair in mappedNums]         
