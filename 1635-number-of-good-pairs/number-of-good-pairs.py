@@ -3,8 +3,7 @@ class Solution:
         seenEle = {}
         ans = 0
         for i in range(len(nums)):
-            num = nums[i]
-            if nums[i] in seenEle:
-                ans += seenEle[num]
-            seenEle[num] = seenEle.get(num, 0) + 1
+            seenEle[nums[i]] = seenEle.get(nums[i], 0) + 1
+        for freq in seenEle.values():
+            ans += (freq*(freq-1))//2
         return ans
