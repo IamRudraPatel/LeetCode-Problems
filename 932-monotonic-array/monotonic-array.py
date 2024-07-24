@@ -1,13 +1,14 @@
 class Solution:
     def isMonotonic(self, nums: List[int]) -> bool:
-        increasing, decreasing = True, True
+        inc, dec = True, True
         for i in range(len(nums)-1):
             # not monotone incresing
             # nums[i] > nums[i+1]
             if not (nums[i] <= nums[i+1]):
-                increasing = False
+                inc = False
+                continue
             # not monotone decreasing
             # nums[i] < nums[i+1]
             if not (nums[i] >= nums[i+1]):
-                decreasing = False
-        return increasing or decreasing
+                dec = False
+        return inc or dec
