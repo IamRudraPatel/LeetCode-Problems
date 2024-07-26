@@ -4,20 +4,14 @@ class Solution:
         st = deque()
         for ch in tokens:
             if ch == '+':
-                n1 = int(st.pop())
-                n2 = int(st.pop())
-                st.append(n2 + n1)
+                st.append(st.pop() + st.pop())
             elif ch == '-':
-                n1 = int(st.pop())
-                n2 = int(st.pop())
+                n1, n2 = st.pop(), st.pop()
                 st.append(n2 - n1)
             elif ch == '*':
-                n1 = int(st.pop())
-                n2 = int(st.pop())
-                st.append(n2 * n1)
+                st.append(st.pop() * st.pop())
             elif ch == '/':
-                n1 = int(st.pop())  
-                n2 = int(st.pop())
+                n1, n2 = st.pop(), st.pop()
                 st.append(int(n2 / n1))
             else: st.append(int(ch))
-        return st[-1]
+        return st[0]
