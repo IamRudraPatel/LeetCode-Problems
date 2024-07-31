@@ -6,5 +6,5 @@ class Solution:
             ch = s[i].lower()
             if ch != lc:
                 ans += 1
-                lc = ch
+            lc = ch
         return ans
