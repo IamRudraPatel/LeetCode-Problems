@@ -1,8 +1,8 @@
 class Solution:
     def countCharacters(self, words: List[str], chars: str) -> int:
-        freqCh = defaultdict(int)
-        for ch in chars: freqCh[ch] += 1
+        freqCh = Counter(chars)
         ans = 0
+        
         for word in words:
             freqWord = defaultdict(int)
             good = True
