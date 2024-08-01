@@ -5,8 +5,11 @@ class Solution:
         ans = 0
         for word in words:
             freqWord = defaultdict(int)
-            for ch in word: freqWord[ch] += 1
-            for ch in freqWord:
-                if freqCh[ch] < freqWord[ch]: break
-            else: ans += len(word)
+            good = True
+            for ch in word: 
+                freqWord[ch] += 1
+                if (ch not in freqCh) or (freqCh[ch] < freqWord[ch]):
+                    good = False
+                    break
+            if good: ans += len(word)
         return ans
