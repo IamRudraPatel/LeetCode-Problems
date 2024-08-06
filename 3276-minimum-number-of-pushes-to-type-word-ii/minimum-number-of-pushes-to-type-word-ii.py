@@ -7,5 +7,6 @@ class Solution:
         freqArr.sort(reverse=True)
         ans = 0
         for i in range(26):
+            if freqArr[i]==0: break
             ans += freqArr[i] * (1 + i//8)
         return ans
