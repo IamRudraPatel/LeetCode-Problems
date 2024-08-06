@@ -5,8 +5,7 @@ class Solution:
         for ch in word:
             freqArr[ord(ch)-A] += 1
         freqArr.sort(reverse=True)
-        ans, eight = 0, 0
+        ans = 0
         for i in range(26):
-            ans += freqArr[i] * (1 + eight//8)
-            eight += 1
+            ans += freqArr[i] * (1 + i//8)
         return ans
