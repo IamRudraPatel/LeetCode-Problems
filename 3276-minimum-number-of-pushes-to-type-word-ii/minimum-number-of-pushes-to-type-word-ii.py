@@ -1,11 +1,12 @@
 class Solution:
     def minimumPushes(self, word: str) -> int:
-        l=[0]*(32)
+        A = ord('a')
+        freqArr = [0]*26
+        for ch in word:
+            freqArr[ord(ch)-A] += 1
+        freqArr.sort(reverse=True)
+        ans = 0
         for i in range(26):
-            l[i]=word.count(chr(97+i))
-        l.sort(reverse=True)
-        res=0
-        for i in range(4):
-            for j in range(8):
-                res+=(i+1)*l[8*i+j]
-        return res
+            if freqArr[i]==0: break
+            ans += freqArr[i] * (1 + i//8)
+        return ans
