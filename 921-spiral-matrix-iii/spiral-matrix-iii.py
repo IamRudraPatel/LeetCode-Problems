@@ -14,3 +14,5 @@ class Solution:
                 i = (i + 1) % 4
             steps += 1
         return ans
+# Time Complexity = O[max(rows, cols)^2]
+# Space Complexity = O(1)
