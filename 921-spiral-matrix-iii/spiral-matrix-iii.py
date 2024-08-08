@@ -1,11 +1,9 @@
 class Solution:
     def spiralMatrixIII(self, rows: int, cols: int, rStart: int, cStart: int) -> List[List[int]]:
-        # L D R U
         direction = [[0, 1], [1, 0], [0, -1], [-1, 0]]
         ans = []
         r, c = rStart, cStart
-        steps = 1
-        i = 0
+        steps, i = 1, 0
         while (len(ans) < rows * cols):
             for _ in range(2):
                 cr, cc = direction[i]
